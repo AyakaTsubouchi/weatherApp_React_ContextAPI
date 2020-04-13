@@ -21,7 +21,7 @@ class Weather extends Component {
         const lon = position.coords.longitude;
 
         const API_KEY = process.env.REACT_APP_OWM_API;
-        //currtent weather
+
         const CurrentURL = `https://api.openweathermap.org/data/2.5/weather?`;
         const byGeo = `${CurrentURL}lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
@@ -46,9 +46,6 @@ class Weather extends Component {
   };
 
   getWeatherByCity = async (propCity) => {
-    //if form value is not null
-
-    //current weather
     const city = propCity;
     const API_KEY = process.env.REACT_APP_OWM_API;
     const CurrentURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
