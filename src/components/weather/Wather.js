@@ -13,7 +13,12 @@ class Weather extends Component {
   componentDidMount() {
     this.getWeatherByGeo();
   }
-
+  //for geolocation error
+  error = () => {
+    console.log('error');
+    this.getWeatherByCity('Vancouver');
+  };
+  //get the current weather info by geolocation
   getWeatherByGeo = async () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(async (position) => {
@@ -22,10 +27,10 @@ class Weather extends Component {
 
         const API_KEY = process.env.REACT_APP_OWM_API;
 
-        const CurrentURL = `https://api.openweathermap.org/data/2.5/weather?`;
-        const byGeo = `${CurrentURL}lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+        const GeoURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+        //const byGeo = `${CurrentURL}lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
-        const apiCall = await fetch(byGeo);
+        const apiCall = await fetch(GeoURL);
         if (apiCall.status !== 200) console.log('something wrong');
 
         const response = await apiCall.json();
@@ -33,20 +38,18 @@ class Weather extends Component {
         this.setState({
           temp: response.main.temp,
           city: response.name,
-          humidity: response.main.humidity,
           weather: response.weather[0].main,
           description: response.weather[0].description,
         });
-        console.log(this.state);
-      });
+      }, this.error);
     } else {
-      console.log('search default city');
+      console.log('search by default city');
       this.getWeatherByCity('Vancouver');
     }
   };
 
-  getWeatherByCity = async (propCity) => {
-    const city = propCity;
+  getWeatherByCity = async (city) => {
+    // const city = inputCity;
     const API_KEY = process.env.REACT_APP_OWM_API;
     const CurrentURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
@@ -54,12 +57,10 @@ class Weather extends Component {
     if (apiCall.status !== 200) console.log('something wrong');
 
     const response = await apiCall.json();
-    console.log(response);
 
     this.setState({
       temp: response.main.temp,
       city: response.name,
-      humidity: response.main.humidity,
       weather: response.weather[0].main,
       description: response.weather[0].description,
     });
