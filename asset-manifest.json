@@ -1,17 +1,15 @@
 {
   "files": {
-    "main.css": "/weatherApp_React_ContextAPI/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/weatherApp_React_ContextAPI/static/js/main.f6c99832.chunk.js",
-    "main.js.map": "/weatherApp_React_ContextAPI/static/js/main.f6c99832.chunk.js.map",
+    "main.js": "/weatherApp_React_ContextAPI/static/js/main.52a0e08a.chunk.js",
+    "main.js.map": "/weatherApp_React_ContextAPI/static/js/main.52a0e08a.chunk.js.map",
     "runtime-main.js": "/weatherApp_React_ContextAPI/static/js/runtime-main.2141bac1.js",
     "runtime-main.js.map": "/weatherApp_React_ContextAPI/static/js/runtime-main.2141bac1.js.map",
-    "static/js/2.8dfb8c97.chunk.js": "/weatherApp_React_ContextAPI/static/js/2.8dfb8c97.chunk.js",
-    "static/js/2.8dfb8c97.chunk.js.map": "/weatherApp_React_ContextAPI/static/js/2.8dfb8c97.chunk.js.map",
+    "static/js/2.188b7e52.chunk.js": "/weatherApp_React_ContextAPI/static/js/2.188b7e52.chunk.js",
+    "static/js/2.188b7e52.chunk.js.map": "/weatherApp_React_ContextAPI/static/js/2.188b7e52.chunk.js.map",
     "index.html": "/weatherApp_React_ContextAPI/index.html",
-    "precache-manifest.b93736039cbf345d18c38c77851c6ce3.js": "/weatherApp_React_ContextAPI/precache-manifest.b93736039cbf345d18c38c77851c6ce3.js",
+    "precache-manifest.c0d1f9fb77314916888f8a31638b8a3a.js": "/weatherApp_React_ContextAPI/precache-manifest.c0d1f9fb77314916888f8a31638b8a3a.js",
     "service-worker.js": "/weatherApp_React_ContextAPI/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/weatherApp_React_ContextAPI/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.8dfb8c97.chunk.js.LICENSE.txt": "/weatherApp_React_ContextAPI/static/js/2.8dfb8c97.chunk.js.LICENSE.txt",
+    "static/js/2.188b7e52.chunk.js.LICENSE.txt": "/weatherApp_React_ContextAPI/static/js/2.188b7e52.chunk.js.LICENSE.txt",
     "static/media/cloud.svg": "/weatherApp_React_ContextAPI/static/media/cloud.e8470e96.svg",
     "static/media/day-and-night.svg": "/weatherApp_React_ContextAPI/static/media/day-and-night.086b33af.svg",
     "static/media/flash.svg": "/weatherApp_React_ContextAPI/static/media/flash.8a31af56.svg",
@@ -20,8 +18,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.2141bac1.js",
-    "static/js/2.8dfb8c97.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.f6c99832.chunk.js"
+    "static/js/2.188b7e52.chunk.js",
+    "static/js/main.52a0e08a.chunk.js"
   ]
 }
