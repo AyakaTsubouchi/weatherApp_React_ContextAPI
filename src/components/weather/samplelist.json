@@ -1,0 +1,34 @@
+
+
+[
+    {
+    "id": 1850144,
+    "name": "Tokyo Prefecture",
+    "state": "",
+    "country": "JP",
+    "coord": {
+      "lon": 139.691711,
+      "lat": 35.689499
+    }
+  },
+  {
+    "id": 1850147,
+    "name": "Tokyo",
+    "state": "",
+    "country": "JP",
+    "coord": {
+      "lon": 139.691711,
+      "lat": 35.689499
+    }
+  },
+  {
+    "id": 1850152,
+    "name": "Tokuyama",
+    "state": "",
+    "country": "JP",
+    "coord": {
+      "lon": 131.816666,
+      "lat": 34.049999
+    }
+  }
+]
