@@ -1,30 +1,17 @@
 import React, { Component } from 'react';
 import WeatherCard from './WeatherCard';
-import sampleForecas from './forecasSample.json';
 import AppContext from '../context';
 
 class Weather extends Component {
-  // state = {
-  //   tempMax: '',
-  //   tempMin: '',
-  //   city: '',
-  //   country: '',
-  //   humidity: '',
-  //   description: '',
-  //   error: '',
-  //   fDate: '',
-  //   forecastRes: [],
-  // };
   constructor() {
     super();
     this.state = {
-      name: '',
-      response: [],
+      city: '',
     };
   }
 
   componentDidMount() {
-    // this.getWeatherByGeo();
+    this.getWeatherByGeo();
   }
 
   getWeatherByGeo = async () => {
@@ -44,20 +31,17 @@ class Weather extends Component {
         const response = await apiCall.json();
 
         this.setState({
-          // tempMax: response.main.temp_max,
-          // tempMin: response.main.temp_min,
-          // city: response.name,
-          // country: response.sys.country,
-          // humidity: response.main.humidity,
-          // description: response.weather[0].description,
-          // error: '',
-          //forecastRes: [],
-          response,
+          temp: response.main.temp,
+          city: response.name,
+          humidity: response.main.humidity,
+          weather: response.weather[0].main,
+          description: response.weather[0].description,
         });
         console.log(this.state);
       });
     } else {
-      console.log('geolocation IS NOT available');
+      console.log('search default city');
+      this.getWeatherByCity('Vancouver');
     }
   };
 
@@ -66,7 +50,7 @@ class Weather extends Component {
 
     //current weather
     const city = propCity;
-    const API_KEY = 'a9d26cdce59f235872922cf298bfdd24';
+    const API_KEY = process.env.REACT_APP_OWM_API;
     const CurrentURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
     const apiCall = await fetch(CurrentURL);
@@ -76,39 +60,33 @@ class Weather extends Component {
     console.log(response);
 
     this.setState({
-      tempMax: response.main.temp_max,
-      tempMin: response.main.temp_min,
+      temp: response.main.temp,
       city: response.name,
-      country: response.sys.country,
       humidity: response.main.humidity,
+      weather: response.weather[0].main,
       description: response.weather[0].description,
-      error: '',
-      forecastRes: [],
     });
-    //forecast
-
-    const ForecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`;
-    const forecastAPI = await fetch(ForecastURL);
-    if (forecastAPI.status !== 200) console.log('something wrong');
-    const forecastRes = await forecastAPI.json();
-    this.setState({
-      forecastRes: forecastRes,
-    });
-    console.log('focastcity', forecastRes);
-    console.log(this.state);
   };
 
   render() {
     return (
       <div>
-        <button onClick={this.getWeatherByCity}>CLICK</button>
-        {/* <AppContext.Provider value={{ state: this.state }}> */}
-        <AppContext.Provider value={this.state.response}>
-          <WeatherCard
-            description={this.state.description}
-            getWeatherByCity={this.getWeatherByCity}
-          />
+        <AppContext.Provider value={this.state}>
+          <WeatherCard getWeatherByCity={this.getWeatherByCity} />
         </AppContext.Provider>
+        <div className="copy-right">
+          Icons made by{' '}
+          <a
+            href="https://www.flaticon.com/authors/smashicons"
+            title="Smashicons">
+            Smashicons
+          </a>{' '}
+          from{' '}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            {' '}
+            www.flaticon.com
+          </a>
+        </div>
       </div>
     );
   }
