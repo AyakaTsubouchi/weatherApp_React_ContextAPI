@@ -30,9 +30,10 @@ class WeatherCard extends Component {
       }
     });
     if (flag === 0) {
-      alert('try again');
+      alert(
+        "I'm sorry. I couldn't find the ciry name in our dictionary. Please try different name."
+      );
     } else {
-      alert("let's search");
       this.props.getWeatherByCity(this.state.city);
     }
   };

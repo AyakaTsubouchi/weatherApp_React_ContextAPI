@@ -7,6 +7,7 @@ class Weather extends Component {
     super();
     this.state = {
       city: '',
+      getWeatherByCity: this.getWeatherByCity,
     };
   }
 
@@ -28,7 +29,6 @@ class Weather extends Component {
         const API_KEY = process.env.REACT_APP_OWM_API;
 
         const GeoURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
-        //const byGeo = `${CurrentURL}lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
         const apiCall = await fetch(GeoURL);
         if (apiCall.status !== 200) console.log('something wrong');
