@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import WeatherCard from './WeatherCard';
-import AppContext from '../context';
+import WeatherContext from '../context';
 
-class Weather extends Component {
-  constructor() {
-    super();
-    this.state = {
-      city: '',
-      getWeatherByCity: this.getWeatherByCity,
-    };
-  }
+//here is the component to get weather info
+// so let's see what's going on
+const Weather = () => {
+  const [weather, setWeather] = useContext(WeatherContext);
 
-  componentDidMount() {
-    this.getWeatherByGeo();
-  }
+  useEffect(() => {
+    getWeatherByGeo();
+  }, []);
+
   //for geolocation error
-  error = () => {
+  const error = () => {
     console.log('error');
-    this.getWeatherByCity('Vancouver');
+    getWeatherByCity('Vancouver');
   };
   //get the current weather info by geolocation
-  getWeatherByGeo = async () => {
+  const getWeatherByGeo = async () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const lat = position.coords.latitude;
@@ -35,21 +32,23 @@ class Weather extends Component {
 
         const response = await apiCall.json();
 
-        this.setState({
+        setWeather({
+          ...weather,
           temp: response.main.temp,
           city: response.name,
           weather: response.weather[0].main,
           description: response.weather[0].description,
         });
-      }, this.error);
+
+        console.log(weather.temp);
+      }, error);
     } else {
       console.log('search by default city');
-      this.getWeatherByCity('Vancouver');
+      getWeatherByCity('Vancouver');
     }
   };
 
-  getWeatherByCity = async (city) => {
-    // const city = inputCity;
+  const getWeatherByCity = async (city) => {
     const API_KEY = process.env.REACT_APP_OWM_API;
     const CurrentURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
@@ -57,8 +56,8 @@ class Weather extends Component {
     if (apiCall.status !== 200) console.log('something wrong');
 
     const response = await apiCall.json();
-
-    this.setState({
+    setWeather({
+      ...weather,
       temp: response.main.temp,
       city: response.name,
       weather: response.weather[0].main,
@@ -66,27 +65,32 @@ class Weather extends Component {
     });
   };
 
-  render() {
-    return (
-      <div>
-        <AppContext.Provider value={this.state}>
-          <WeatherCard getWeatherByCity={this.getWeatherByCity} />
-        </AppContext.Provider>
-        <div className="copy-right">
-          Icons made by{' '}
-          <a
-            href="https://www.flaticon.com/authors/smashicons"
-            title="Smashicons">
-            Smashicons
-          </a>{' '}
-          from{' '}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            {' '}
-            www.flaticon.com
-          </a>
-        </div>
+  // render() {
+  return (
+    <div>
+      <WeatherCard
+        getWeatherByCity={getWeatherByCity}
+        temp={weather.temp}
+        city={weather.city}
+        weather={weather.weather}
+        description={weather.description}
+      />
+
+      <div className="copy-right">
+        Icons made by{' '}
+        <a
+          href="https://www.flaticon.com/authors/smashicons"
+          title="Smashicons">
+          Smashicons
+        </a>{' '}
+        from{' '}
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          {' '}
+          www.flaticon.com
+        </a>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+// }
 export default Weather;

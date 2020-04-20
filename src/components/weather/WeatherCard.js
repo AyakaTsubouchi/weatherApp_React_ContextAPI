@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import citylist from './citylist.json';
-import AppContext from '../context';
+import WeatherContext from '../context';
 
 //icon
 import Clear from './icon/day-and-night.svg';
@@ -9,23 +9,24 @@ import Rain from './icon/umbrella.svg';
 import Snow from './icon/snow.svg';
 import Extream from './icon/flash.svg';
 
-class WeatherCard extends Component {
-  state = {
-    city: '',
-  };
+const WeatherCard = (props) => {
+  //here, I tried to use it, but it doesn't work.
+  // const { city, setCity } = useState('vancouver');
+  const [weather, setWeather] = useContext(WeatherContext);
+  // const weatherData = useContext(AppContext);
 
-  handleChange = (e) => {
-    this.setState({
+  const handleChange = (e) => {
+    setWeather({
+      ...weather,
       city: e.target.value.toLowerCase(),
     });
-    console.log(this.state.city);
   };
 
-  handleClick = () => {
+  const handleClick = () => {
     //check if the input city name is vallid or not
     let flag = 0;
     citylist.map((item) => {
-      if (item.name.toLowerCase() === this.state.city) {
+      if (item.name.toLowerCase() === weather.city) {
         flag = 1;
       }
     });
@@ -34,10 +35,11 @@ class WeatherCard extends Component {
         "I'm sorry. I couldn't find the ciry name in our dictionary. Please try different name."
       );
     } else {
-      this.props.getWeatherByCity(this.state.city);
+      props.getWeatherByCity(weather.city);
     }
   };
-  weatherIcon = (weather) => {
+
+  const weatherIcon = (weather) => {
     switch (weather) {
       case 'Clear':
         return Clear;
@@ -54,48 +56,42 @@ class WeatherCard extends Component {
         return Clouds;
     }
   };
-  render() {
-    return (
-      <AppContext.Consumer>
-        {(weatherData) => (
-          <div className="container">
-            <div className="app-title">
-              <p>Weather App</p>
-            </div>
-            <div className="form">
-              <input
-                type="text"
-                placeholder="Vancouver"
-                onChange={this.handleChange}
-                value={this.state.city}
-              />
-              <button onClick={this.handleClick}>GET WEATHER</button>
-            </div>
-            <div className="weather-container">
-              <div className="description">
-                <p>{weatherData.city}</p>
-              </div>
-              <div className="weather-icon">
-                <img src={this.weatherIcon(weatherData.weather)} />
-              </div>
 
-              <div className="temperature-value">
-                <p>
-                  {weatherData.temp
-                    ? Math.round(weatherData.temp - 273.15)
-                    : null}
-                  °<span>C</span>
-                </p>
-              </div>
-              <div className="description">
-                <p>{weatherData.description}</p>
-              </div>
-            </div>
+  return (
+    <div className="container">
+      <>
+        <div className="app-title">
+          <p>Weather App</p>
+        </div>
+        <div className="form">
+          <input
+            type="text"
+            placeholder="Vancouver"
+            onChange={handleChange}
+            value={weather.city}
+          />
+          <button onClick={handleClick}>GET WEATHER</button>
+        </div>
+        <div className="weather-container">
+          <div className="description">
+            <p>{weather.city}</p>
           </div>
-        )}
-      </AppContext.Consumer>
-    );
-  }
-}
+          <div className="weather-icon">
+            <img alt="weather icon" src={weatherIcon(props.weather)} />
+          </div>
 
+          <div className="temperature-value">
+            <p>
+              {props.temp ? Math.round(props.temp - 273.15) : null}°
+              <span>C</span>
+            </p>
+          </div>
+          <div className="description">
+            <p>{props.description}</p>
+          </div>
+        </div>
+      </>
+    </div>
+  );
+};
 export default WeatherCard;

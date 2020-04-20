@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { WeatherProvider } from './context';
 
 import Weather from './weather/Wather';
 
@@ -6,7 +7,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Weather />
+        <WeatherProvider>
+          <Weather />
+        </WeatherProvider>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 DEMO
-https://ayakatsubouchi.github.io/weatherApp_React_ContextAPI/
+https://ayakatsubougichi.github.io/weatherApp_React_ContextAPI/
 
 API
 https://openweathermap.org/api
