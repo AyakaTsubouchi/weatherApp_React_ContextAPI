@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/weatherApp_React_ContextAPI/static/js/main.dea29859.chunk.js",
-    "main.js.map": "/weatherApp_React_ContextAPI/static/js/main.dea29859.chunk.js.map",
+    "main.js": "/weatherApp_React_ContextAPI/static/js/main.d8d5b7da.chunk.js",
+    "main.js.map": "/weatherApp_React_ContextAPI/static/js/main.d8d5b7da.chunk.js.map",
     "runtime-main.js": "/weatherApp_React_ContextAPI/static/js/runtime-main.2141bac1.js",
     "runtime-main.js.map": "/weatherApp_React_ContextAPI/static/js/runtime-main.2141bac1.js.map",
-    "static/js/2.188b7e52.chunk.js": "/weatherApp_React_ContextAPI/static/js/2.188b7e52.chunk.js",
-    "static/js/2.188b7e52.chunk.js.map": "/weatherApp_React_ContextAPI/static/js/2.188b7e52.chunk.js.map",
+    "static/js/2.17fa87da.chunk.js": "/weatherApp_React_ContextAPI/static/js/2.17fa87da.chunk.js",
+    "static/js/2.17fa87da.chunk.js.map": "/weatherApp_React_ContextAPI/static/js/2.17fa87da.chunk.js.map",
     "index.html": "/weatherApp_React_ContextAPI/index.html",
-    "precache-manifest.30a13e6b2ff94da2a1896c8df46a2341.js": "/weatherApp_React_ContextAPI/precache-manifest.30a13e6b2ff94da2a1896c8df46a2341.js",
+    "precache-manifest.8bb6b07b3cc56934a10e3ac3624dac92.js": "/weatherApp_React_ContextAPI/precache-manifest.8bb6b07b3cc56934a10e3ac3624dac92.js",
     "service-worker.js": "/weatherApp_React_ContextAPI/service-worker.js",
-    "static/js/2.188b7e52.chunk.js.LICENSE.txt": "/weatherApp_React_ContextAPI/static/js/2.188b7e52.chunk.js.LICENSE.txt",
+    "static/js/2.17fa87da.chunk.js.LICENSE.txt": "/weatherApp_React_ContextAPI/static/js/2.17fa87da.chunk.js.LICENSE.txt",
     "static/media/cloud.svg": "/weatherApp_React_ContextAPI/static/media/cloud.e8470e96.svg",
     "static/media/day-and-night.svg": "/weatherApp_React_ContextAPI/static/media/day-and-night.086b33af.svg",
     "static/media/flash.svg": "/weatherApp_React_ContextAPI/static/media/flash.8a31af56.svg",
@@ -18,7 +18,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.2141bac1.js",
-    "static/js/2.188b7e52.chunk.js",
-    "static/js/main.dea29859.chunk.js"
+    "static/js/2.17fa87da.chunk.js",
+    "static/js/main.d8d5b7da.chunk.js"
   ]
 }
