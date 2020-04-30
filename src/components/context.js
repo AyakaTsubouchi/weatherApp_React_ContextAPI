@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react';
 
-export const WeatherContext = createContext(null);
+const WeatherContext = createContext(null);
 export const WeatherProvider = (props) => {
   const [weather, setWeather] = useState({
     temp: null,
@@ -8,19 +8,9 @@ export const WeatherProvider = (props) => {
     weather: null,
     description: null,
   });
-  //   const { temp, setTemp } = useState('ff');
-  //   const { city, setCity } = useState('vancouver');
-  //   const { weather, setWeather } = useState('');
-  //   const { description, setDescription } = useState('');
+
   return (
-    <WeatherContext.Provider
-      value={
-        [weather, setWeather]
-        // ({ temp, setTemp },
-        // { city, setCity },
-        // { weather, setWeather },
-        // { description, setDescription })
-      }>
+    <WeatherContext.Provider value={[weather, setWeather]}>
       {props.children}
     </WeatherContext.Provider>
   );

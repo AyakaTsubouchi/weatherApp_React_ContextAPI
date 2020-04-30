@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WeatherProvider } from './context';
 
-import Weather from './weather/Wather';
+import Weather from './weather/Weather';
 
 class App extends Component {
   render() {

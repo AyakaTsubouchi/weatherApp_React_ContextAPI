@@ -65,7 +65,6 @@ const Weather = () => {
     });
   };
 
-  // render() {
   return (
     <div>
       <WeatherCard
